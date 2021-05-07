@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import styled from 'styled-components';
+import Navbar from './cmps/layout/Navbar';
+import Sidebar from './cmps/layout/Sidebar';
+import GlobalStyle from './theme/globalStyles';
+import MovieApp from './views/MovieApp';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+        <Navbar />
+      <AppLayout>
+        <Sidebar />
+        <MovieApp />
+      </AppLayout>
     </div>
   );
 }
 
 export default App;
+
+const AppLayout = styled.div`
+  height: calc(100vh - 65px);
+  display: flex;
+`;
